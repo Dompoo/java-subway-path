@@ -13,4 +13,20 @@ public class SubLine {
 		this.length = length;
 		this.time = time;
 	}
+	
+	public Station getFrom() {
+		return from;
+	}
+	
+	public Station getTo() {
+		return to;
+	}
+	
+	public int getLength() {
+		return length;
+	}
+	
+	public int getTime() {
+		return time;
+	}
 }
