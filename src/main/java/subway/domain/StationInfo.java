@@ -1,5 +1,9 @@
 package subway.domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum StationInfo {
 
 	교대,
@@ -11,5 +15,9 @@ public enum StationInfo {
 	매봉,
 	;
 	
-	
+	public static List<Station> createStations() {
+		return Arrays.stream(StationInfo.values())
+				.map(info -> new Station(info.name()))
+				.collect(Collectors.toList());
+	}
 }
