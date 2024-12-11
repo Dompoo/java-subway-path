@@ -8,6 +8,10 @@ import java.util.Objects;
 public class LineRepository {
     
     private static final List<Line> lines = new ArrayList<>();
+    
+    public static void init(List<Station> stations) {
+        lines.addAll(LineInfo.createLines(stations));
+    }
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);

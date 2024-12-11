@@ -8,6 +8,10 @@ import java.util.Objects;
 public class StationRepository {
     
     private static final List<Station> stations = new ArrayList<>();
+    
+    public static void init() {
+		stations.addAll(StationInfo.createStations());
+    }
 
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
