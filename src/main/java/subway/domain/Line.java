@@ -1,13 +1,17 @@
 package subway.domain;
 
+import java.util.List;
+
 public class Line {
     
-    private String name;
-
-    public Line(String name) {
+    private final String name;
+    private final List<SubLine> subLines;
+    
+    public Line(String name, List<SubLine> subLines) {
         this.name = name;
+        this.subLines = subLines;
     }
-
+    
     public String getName() {
         return name;
     }
