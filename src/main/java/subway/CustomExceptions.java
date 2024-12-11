@@ -6,6 +6,10 @@ public enum CustomExceptions {
 			"노선 정보에 문제가 있습니다. 프로그램을 종료합니다.",
 			IllegalStateException.class
 	),
+	STATION_NOT_FOUND(
+			"존재하지 않는 역 이름입니다. 프로그램을 종료합니다.",
+			IllegalStateException.class
+	),
 	;
 	
 	private final String message;

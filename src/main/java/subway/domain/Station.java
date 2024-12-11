@@ -19,7 +19,7 @@ public class Station {
         return name;
     }
     
-    public PathFindResult findLengthShotestPath(
+    public static PathFindResult findLengthShotestPath(
             Station from,
             Station to,
             List<Station> stations,
@@ -35,7 +35,7 @@ public class Station {
         return getPathFindResult(from, to, graph);
     }
     
-    public PathFindResult findTimeShotestPath(
+    public static PathFindResult findTimeShotestPath(
             Station from,
             Station to,
             List<Station> stations,
@@ -51,7 +51,7 @@ public class Station {
         return getPathFindResult(from, to, graph);
     }
     
-    private PathFindResult getPathFindResult(Station from, Station to, WeightedMultigraph<Station, SubLine> graph) {
+    private static PathFindResult getPathFindResult(Station from, Station to, WeightedMultigraph<Station, SubLine> graph) {
         GraphPath<Station, SubLine> path = new DijkstraShortestPath<>(graph).getPath(from, to);
         List<String> stationNames = path.getVertexList().stream()
                 .map(Station::getName)

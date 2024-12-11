@@ -1,9 +1,6 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class StationRepository {
     
@@ -14,7 +11,18 @@ public class StationRepository {
     }
 
     public static List<Station> stations() {
+        if (stations.isEmpty()) init();
         return Collections.unmodifiableList(stations);
+    }
+    
+    public static Optional<Station> findByName(String name) {
+        if (stations().isEmpty()) init();
+        for (Station station : stations) {
+            if (station.getName().equals(name)) {
+                return Optional.of(station);
+            }
+        }
+        return Optional.empty();
     }
 
     public static void addStation(Station station) {
