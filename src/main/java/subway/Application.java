@@ -11,7 +11,7 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         while(true) {
-            System.out.println("""
+            System.out.print("""
                 ## 메인 화면
                 1. 경로 조회
                 Q. 종료
@@ -21,17 +21,17 @@ public class Application {
             String input = scanner.nextLine();
             if (input.equals("Q")) return;
             
-            System.out.println("""
+            System.out.print("""
                 ## 출발역을 입력하세요.
                 """);
             String startStationName = scanner.nextLine();
             
-            System.out.println("""
+            System.out.print("""
                 ## 도착역을 입력하세요.
                 """);
             String endStationName = scanner.nextLine();
             
-            System.out.println("""
+            System.out.print("""
                 ## 경로 기준
                 1. 최단 거리
                 2. 최소 시간
@@ -47,7 +47,7 @@ public class Application {
                         StationRepository.stations(),
                         LineRepository.subLines()
                 );
-                System.out.println(result);
+                System.out.print(result);
                 continue;
             }
             
@@ -57,7 +57,7 @@ public class Application {
                     StationRepository.stations(),
                     LineRepository.subLines()
             );
-            System.out.println(result);
+            System.out.print(result);
         }
     }
 }

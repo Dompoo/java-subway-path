@@ -1,5 +1,6 @@
 package subway.domain;
 
+import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -25,12 +26,13 @@ public class Station {
             List<Station> stations,
             List<SubLine> sublines
     ) {
-        WeightedMultigraph<Station, SubLine> graph = new WeightedMultigraph<>(SubLine.class);
+        Graph<Station, SubLine> graph = new WeightedMultigraph<>(SubLine.class);
         for (Station station : stations) {
             graph.addVertex(station);
         }
         for (SubLine subline : sublines) {
-            graph.setEdgeWeight(graph.addEdge(subline.getFrom(), subline.getTo()), subline.getLength());
+            graph.addEdge(subline.getFrom(), subline.getTo(), subline);
+            graph.setEdgeWeight(subline, subline.getLength());
         }
         return getPathFindResult(from, to, graph);
     }
@@ -51,7 +53,7 @@ public class Station {
         return getPathFindResult(from, to, graph);
     }
     
-    private static PathFindResult getPathFindResult(Station from, Station to, WeightedMultigraph<Station, SubLine> graph) {
+    private static PathFindResult getPathFindResult(Station from, Station to, Graph<Station, SubLine> graph) {
         GraphPath<Station, SubLine> path = new DijkstraShortestPath<>(graph).getPath(from, to);
         List<String> stationNames = path.getVertexList().stream()
                 .map(Station::getName)

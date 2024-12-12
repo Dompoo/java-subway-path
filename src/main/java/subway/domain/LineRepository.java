@@ -17,6 +17,7 @@ public class LineRepository {
     }
     
     public static List<SubLine> subLines() {
+        if (lines.isEmpty()) init();
         return lines.stream()
                 .map(Line::getSubLines)
                 .flatMap(Collection::stream)
